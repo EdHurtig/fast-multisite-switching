@@ -23,9 +23,9 @@ class MultiSiteFastSwitcher {
 	 * Constructor (only registers filters and actions right now)
 	 */
 	function __construct() {
-		add_filter( 'get_blogs_of_user', 'show_all_sites_for_super_admins' );
-		add_action( 'myblogs_allblogs_options', 'add_search_field' );
-		add_filter( 'myblogs_blog_actions', 'add_site_slug', 10, 2 );
+		add_filter( 'get_blogs_of_user', array( &$this, 'show_all_sites_for_super_admins' ) );
+		add_action( 'myblogs_allblogs_options', array( &$this, 'add_search_field' ) );
+		add_filter( 'myblogs_blog_actions', array( &$this, 'add_site_slug' ), 10, 2 );
 	}
 
 	/**
